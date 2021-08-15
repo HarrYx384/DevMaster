@@ -1,12 +1,12 @@
-pipeline {
-agent { slave-1 ( label "slave-1" ) }
- stages {
-      stage ('build docker file') {
-         steps {
-             sh "mkdir -p /arpan"
-             sh "cd /vikash"
-             sh "docker build -t tomcat-server -f image-build"
-}
-  }
-    }
- 
+FROM centos
+MAINTAINER vikash@gmail.com
+RUN yum install -y httpd \
+  zip  \
+ unzip 
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page268/earth.zip /var/www/html/
+WORKDIR /var/www/html
+RUN unzip earth.zip
+RUN cp -rvf 2113_earth/*
+RUN rm -rf 2113_earth kindle.zip
+RUN systemctl start apache
+EXPOSE 80
