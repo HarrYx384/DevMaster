@@ -8,5 +8,3 @@ WORKDIR /var/www/html
 RUN unzip earth.zip
 RUN cp -rvf 2113_earth/*
 RUN rm -rf 2113_earth kindle.zip
-RUN systemctl start apache
-EXPOSE 80
